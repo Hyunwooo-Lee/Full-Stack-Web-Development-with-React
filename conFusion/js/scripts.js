@@ -1,9 +1,9 @@
 $(document).ready(function(){
     $('#mylogin').click(function(){
-        $('#loginModal').modal();
+        $('#loginModal').modal('show');
     });
     $('#myreservetable').click(function(){
-        $('#reserveModal').modal();
+        $('#reserveModal').modal('show');
     });
     $('#mycarousel').carousel({ interval:2000 });
     $('#carouselButton').click(function() {
