@@ -9,6 +9,7 @@ class DishDetail extends Component {
         this.state = {      
         }
         console.log('DishDetail Component constructor is invoked');
+        
     }
 
     componentDidMount() {
@@ -19,18 +20,15 @@ class DishDetail extends Component {
         var retComments;
         if(comments != null){
 
-            retComments = comments.map((comment) => {
-                var mydate = new Date(comment.date);
-                var month = ["January", "February", "March", "April", "May", "June",
-                "July", "August", "September", "October", "November", "December"][mydate.getMonth()];
-                var dateStr = month + ' ' + mydate.getDate()+ ', ' + mydate.getFullYear();
+            retComments = comments.map((comment) => {                
+                var newStr = Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'short', day:'2-digit'}).format(new Date(Date.parse(comment.date)))
                 return (
                     <div>
                         <p tag="li">
                             {comment.comment}{"\n"}
                         </p>
                         <p tag="li">
-                            -- {comment.author}, {dateStr}
+                            -- {comment.author}, {newStr}
                         </p>
                     </div>
                     
@@ -77,8 +75,12 @@ class DishDetail extends Component {
 
     render() {
         console.log('DishDetail Component render is invoked');
-        return (            
-            this.renderDish(this.props.selectedDish)
+        console.log(this.props.dish)
+        
+        return (  
+            <div className="container">
+                {this.renderDish(this.props.dish)}
+            </div>
         );
         
     }
