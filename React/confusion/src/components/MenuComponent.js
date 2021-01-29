@@ -3,7 +3,7 @@ import { Card, CardImg, CardImgOverlay, CardTitle, Breadcrumb, BreadcrumbItem } 
 import { Link } from 'react-router-dom';
 
 
-function RendorMenuItem({ dish, onClick }){
+function RendorMenuItem({ dish }){
 
     return (
         <Card>
@@ -21,7 +21,7 @@ const Menu = (props) => {
     const menu = props.dishes.map((dish) => {
         return (
             <div key={dish.id} className="col-12 col-md-5 m-1">
-                <RendorMenuItem dish={dish} onClick={props.onClick} />
+                <RendorMenuItem dish={dish} />
             </div>
         );
     });
