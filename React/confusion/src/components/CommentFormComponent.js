@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem,
-    Button, Modal, ModalHeader, ModalBody, Row, Col, Label } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Button, Modal, ModalHeader, ModalBody, Row, Col, Label } from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 
 const required = (val) => val && val.length;
 const maxLength =  (len) => (val) => !(val) || (val.length <= len);
 const minLength =  (len) => (val) => (val) && (val.length >= len);
+const isNumber =  (val) => !isNaN(Number(val));
+const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i.test(val);
 
 class CommentForm extends Component {
 
@@ -100,83 +100,4 @@ class CommentForm extends Component {
     }
 }
 
-function RenderComments({comments}) {
-    var retComments;
-    if(comments != null){
-
-        retComments = comments.map((comment) => {                
-            var newStr = Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'short', day:'2-digit'}).format(new Date(Date.parse(comment.date)))
-            return (                              
-                <p>
-                    <text className='ul' className="list-unstyled"></text>
-                    <div>
-                        <p tag="li">
-                            {comment.comment}{"\n"}
-                        </p>
-                        <p tag="li">
-                            -- {comment.author}, {newStr}
-                        </p>
-                    </div>
-                </p>
-            );
-        });
-    }
-    else {
-        retComments = <div></div>;
-    }
-    return (            
-        <div className="col-12 col-md-5 m-1">  
-            <h3>Comments</h3>
-            {retComments}
-            {<CommentForm />}
-        </div>        
-    )
-}
-
-function RenderDish({dish}) {
-    if(dish != null){
-        return (
-            <div key={dish.id} className="col-12 col-md-5 m-1">
-                <Card>
-                    <CardImg width="100%" src={dish.image} alt={dish.name} />
-                    <CardBody>
-                        <CardTitle><h3>{dish.name}</h3></CardTitle>
-                        <CardText>{dish.description}</CardText>
-                    </CardBody>
-                </Card>
-            </div>
-        );
-    }
-    else {
-        return (
-            <div></div>
-        );
-    }        
-}
-
-const DishDetail = (props) => {
-    console.log('DishDetail Component render is invoked');
-    
-    return (  
-        <div className="container">
-            <div className="row">
-                <Breadcrumb>
-                    <BreadcrumbItem><Link to='/menu'>Menu</Link></BreadcrumbItem>
-                    <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
-                </Breadcrumb>
-                <div className="col-12">
-                    <h3>{props.dish.name}</h3>
-                    <hr />
-                </div>
-            </div>
-            <div className="row">
-                <RenderDish dish={props.dish} />
-                <RenderComments comments={props.comments} />                                                     
-            </div>
-        </div>
-    );        
-}
-
-
-
-export default DishDetail;
+export default CommentForm;
