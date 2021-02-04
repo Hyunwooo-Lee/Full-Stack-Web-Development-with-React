@@ -108,15 +108,13 @@ function RenderComments({comments, addComment, dishId}) {
             var newStr = Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'short', day:'2-digit'}).format(new Date(Date.parse(comment.date)))
             return (                              
                 <div key={comment.id}>
-                    <p className='ul list-unstyled'></p>
-                    
+                    <p className='ul list-unstyled'></p>                    
                     <p tag="li">
                         {comment.comment}{"\n"}
                     </p>
                     <p tag="li">
                         -- {comment.author}, {newStr}
-                    </p>
-                    
+                    </p>                    
                 </div>
             );
         });
