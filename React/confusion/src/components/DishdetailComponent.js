@@ -104,7 +104,6 @@ class CommentForm extends Component {
 }
 
 function RenderComments({comments, postComment, dishId}) {
-    var retComments;
     if(comments != null){
         return(
             <div className="col-12 col-md-5 m-1">  

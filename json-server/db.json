@@ -201,6 +201,38 @@
       "comment": "It's your birthday, we're gonna party!",
       "author": "25 Cent",
       "date": "2011-12-02T17:57:28.556094Z"
+    },
+    {
+      "dishId": 1,
+      "rating": "4",
+      "author": "hyunwoo",
+      "comment": "this is a comment",
+      "date": "2021-02-05T05:38:48.568Z",
+      "id": 20
+    },
+    {
+      "dishId": 1,
+      "rating": 1,
+      "author": "dfdf",
+      "comment": "dfdf",
+      "date": "2021-02-05T08:14:25.084Z",
+      "id": 21
+    },
+    {
+      "dishId": 1,
+      "rating": 1,
+      "author": "bbbb",
+      "comment": "cccc",
+      "date": "2021-02-06T04:43:48.429Z",
+      "id": 22
+    },
+    {
+      "dishId": 1,
+      "rating": 1,
+      "author": "dfddff",
+      "comment": "dfdfdf",
+      "date": "2021-02-06T04:55:04.732Z",
+      "id": 23
     }
   ],
   "promotions": [
@@ -263,6 +295,17 @@
       "message": "afadsfds",
       "date": "2017-12-04T09:41:49.890Z",
       "id": 1
+    },
+    {
+      "firstname": "hyunwoo",
+      "lastname": "lee",
+      "telnum": "1231234",
+      "email": "dd@lge.com",
+      "agree": true,
+      "contactType": "Email",
+      "message": "hahahoho",
+      "date": "2021-02-06T05:01:21.293Z",
+      "id": 2
     }
   ]
 }
