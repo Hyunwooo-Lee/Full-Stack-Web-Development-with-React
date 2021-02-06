@@ -2,8 +2,10 @@ import React from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
+import { FadeTransform } from 'react-animation-components';
 
 function RenderCard({item, isLoading, errMess}) {
+  console.log(item);
   if(isLoading) {
     return(
       <Loading />
@@ -16,16 +18,21 @@ function RenderCard({item, isLoading, errMess}) {
   }
   else
     return(
-      <Card>
-        <CardImg src={baseUrl + item.image} alt={item.name} />
-        <CardBody>
-          <CardTitle><h3>{item.name}</h3></CardTitle>
-          <h2>{item.designation ? <CardSubtitle>{item.designation}</CardSubtitle> : null}</h2>
-          <CardText>{item.description}</CardText>
-        </CardBody>
-      </Card>
+      <FadeTransform in
+        transformProps={{
+          exitTransform:'scale(0.5) translateY(-50%)'
+        }}>
+        <Card>
+          <CardImg src={baseUrl + item.image} alt={item.name} />
+          <CardBody>
+            <CardTitle><h3>{item.name}</h3></CardTitle>
+            <h2>{item.designation ? <CardSubtitle>{item.designation}</CardSubtitle> : null}</h2>
+            <CardText>{item.description}</CardText>
+          </CardBody>
+        </Card>
+      </FadeTransform>
     );
-}
+  }
 
 function Home(props) {
     return(
@@ -42,7 +49,9 @@ function Home(props) {
               errMess={props.promosErrMess} />
             </div>
             <div className="col-12 col-md m-1">
-              <RenderCard item={props.leader} />
+              <RenderCard item={props.leader} 
+              isLoading={props.leadersLoading}
+              errMess={props.leadersErrMess} />
             </div>
           </div>
       </div>  
